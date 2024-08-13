@@ -5,20 +5,25 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+<div id="content">
+	<div class="areaNews">
+		<div class="inner">
+			<div class="areaTitle">
+				<h2 class="titleMain maven"><span>N</span>ews</h2>
+				<p class="titleSub">お知らせ</p>
+			</div>
+			<div class="newsWrap">
+				<div class="newsContent">
+					<div class="newsContentWrap">
+						<p class="contTime"><?php echo get_the_date() ?></p>
+						<h1 class="contTitle"><?php the_title() ?></h1>
+						<?php the_content() ?>
+					</div>
+				</div>
 
-			<?php /* The loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-
-				<?php get_template_part( 'content', get_post_format() ); ?>
-				<?php mytheme_post_nav(); ?>
-				<?php comments_template(); ?>
-
-			<?php endwhile; ?>
-
-		</div><!-- #content -->
-	</div><!-- #primary -->
-
-<?php get_sidebar(); ?>
+				<?php echo mytheme_post_nav(); ?>
+			</div>
+		</div>
+	</div>
+</div>
 <?php get_footer(); ?>

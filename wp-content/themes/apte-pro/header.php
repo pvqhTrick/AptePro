@@ -13,18 +13,14 @@
     <meta name="googlebot" content=" all ">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/common.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/script.js"></script>
+    <?php wp_head() ?>
 </head>
 
 <body <?php body_class() ?>>
 <div id="header">
     <div class="inner">
         <div class="headerBar">
-            <p class="logo"><a class="hover" href="index.html"><img src="assets/images/common/logo.png" alt=""></a></p>
+            <p class="logo"><a class="hover" href="<?php home_url() ?>"><img src="<?php echo get_theme_file_uri().('/assets/images/common/logo.png') ?>" alt=""></a></p>
             <div class="hamburger sp">
                 <span></span>
                 <span></span>

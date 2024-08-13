@@ -85,23 +85,41 @@ add_filter( 'wp_title', 'mytheme_wp_title', 10, 2 );
 
 
 /// FUNCTION
-// GET DEFAULT IMAGE
-function the_default_thumbnail($gender = true){
-	if(!$gender)
+// THE DEFAULT IMAGE
+function the_default_thumbnail(){
 		echo '<img src="' .get_theme_file_uri() . ('/assets/images/doctor/ava-men'). '">';
-	else
-		echo '<img src="' .get_theme_file_uri() . ('/assets/images/doctor/ava-women'). '">';
 }
+
+// POST NAVIGATION
+if (!function_exists('mytheme_post_nav')):
+	function mytheme_post_nav()	
+	{
+		global $post;
+
+		$previous = get_adjacent_post(false, '', true);
+		$next = get_adjacent_post(false, '', false);
+
+		if (!$next && !$previous)
+			return;
+		?>
+		<div class="pagingNav">
+			<ul class="pagi_nav_list">
+			<?php previous_post_link('<li class="p-control prev">%link</li>', 'Prev'); ?>
+			<li class="backNews"><a href="<?php echo home_url('/news/') ?>">一覧に戻る</a></li>
+			<?php next_post_link('<li class="p-control next">%link</li>', 'Next'); ?>
+			</ul>
+		</div>
+		<?php
+	}
+endif;
 
 // THEME PAGINATION FUNCTION
 function theme_pagination($post_query = null)	
 {
 	global $paged, $wp_query;
 
-	$translate['next'] = '次へ';
-	$translate['prev'] = '前へ';
-	$translate['first'] ='';
-	$translate['end'] ='';
+	$translate['next'] = 'Next';
+	$translate['prev'] = 'Prev';
 
 	if (empty($paged))
 		$paged = 1;
@@ -122,7 +140,7 @@ function theme_pagination($post_query = null)
 		$total = 1;
 
 	if ($total > 1) {
-		echo '<div class="pagingNav hira">';
+		echo '<div class="pagingNav">';
 		echo '<ul class = "pagi_nav_list">';
 		if ($paged > 1) {
 			echo '<li class="p-control prev"><a href="' . previous_posts(false) . '">' . $translate['prev'] . '</a></li>';
@@ -136,7 +154,7 @@ function theme_pagination($post_query = null)
 					echo '<li><a href="' . get_pagenum_link($i) . '">' . $i . '</a></li>';
 					$dots = true;
 				} elseif ($dots && !$show_all) {
-					echo '<li class="dots"><a>...</a></li>';
+					echo '<li class="forth"><a>...</a></li>';
 					$dots = false;
 				}
 			}
@@ -187,92 +205,33 @@ function custom_breadcrumbs() {
     }
 }
 
-// //Add custom rewrite rules
-// function doctor_custom_rewrite_rule() {
-//     add_rewrite_rule(
-//         '^doctor/([0-9]+)/?',
-//         'index.php?doctor_no=$matches[1]',
-//         'top'
-//     );	
-// }
-// add_action('init', 'doctor_custom_rewrite_rule');
-
-// // Add custom query vars
-// function add_custom_query_vars($vars) {
-//     $vars[] = 'doctor_no';
-//     return $vars;
-// }
-// add_filter('query_vars', 'add_custom_query_vars');
-
-// // Modify the query to load the correct post
-// function doctor_custom_query($query) {
-//     if (!is_admin() && $query->is_main_query() && isset($query->query_vars['doctor_no'])) {
-//         $doctor_number = $query->query_vars['doctor_no'];
-// 		var_dump($query->query_vars['doctor_no']);
-//         $meta_query = array(
-//             array(
-//                 'key' => 'doctor_no',
-//                 'value' => $doctor_number,
-//                 'compare' => '=',
-// 				'type' => 'NUMERIC'
-//             )
-//         );
-//         $query->set('meta_query', $meta_query);
-//     }
-// }
-// add_action('pre_get_posts', 'doctor_custom_query');
-
-// // Modify the permalink structure
-// function doctor_post_type_link($post_link, $post) {
-//     if ($post->post_type == 'doctor') {
-//         $doctor_number = get_field('doctor_no', $post->ID);
-//         if ($doctor_number) {	
-//             return home_url('/doctor/' . $doctor_number . '/');
-//         }
-//     }
-//     return $post_link;
-// }
-// add_filter('post_type_link', 'doctor_post_type_link', 1, 2);
-
-
-// add_action('init', function() {
-//     flush_rewrite_rules();
-// });
-
-// FUNCTION SELECT 3 DOCTOR RECOMMEND IN CONTACT FORM 
 
 /// ACTION
 // LOADING CSS AND JS 
 add_action('wp_enqueue_scripts', 'load_assets');
 function load_assets()
 {
-	wp_enqueue_style('maincommoncss', get_theme_file_uri() . '/assets/css/common.css');
-	// wp_enqueue_style('mainjquerycss', get_theme_file_uri() . '/assets/css/jquery.bxslider.css');
-	wp_enqueue_script('jqueryjs', get_theme_file_uri() . "/assets/js/jquery-1.11.0.min.js", array(), '1.0', array('in_footer' => false));
-	// wp_enqueue_script('jquerybxsliderjs', get_theme_file_uri() . "/assets/js/jquery.bxslider.mi	n.js", array('jqueryjs'), '1.0', array('in_footer' => false));
+	wp_enqueue_style('main-common-css', get_theme_file_uri() . '/assets/css/common.css');
+	wp_enqueue_script('jquery-ajax', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js', array(), '1.12.1', true);
 	wp_enqueue_script('mainjs', get_theme_file_uri() . "/assets/js/script.js", array('jqueryjs'), '1.0', array('in_footer' => false));
-	wp_enqueue_script('jquery-ui', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jqueryjs'), '1.12.1', true);
-	wp_enqueue_script('datepicker-ja', 'https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/i18n/datepicker.ja.min.js', array('jquery-ui'), '1.0.10', true);
-	if (is_home() || is_front_page()) {
-		wp_enqueue_style('index-style', get_template_directory_uri() . '/assets/css/index.css');
-	} elseif (is_single()) {
-		wp_enqueue_style('single-style', get_template_directory_uri() . '/assets/css/doctor-detail.css');
-		wp_enqueue_script('jquerybxsliderjs', get_theme_file_uri() . "/assets/js/jquery.bxslider.min.js", array('jqueryjs'), '1.0', array('in_footer' => false));
-	} elseif (is_post_type_archive('doctor')) {
-		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/doctor-list.css');
-	} elseif (is_page('contact-form')) {
-		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/doctor-list.css');
-	} elseif (is_page('faq')) {
-		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/faq.css');
-	} elseif (is_page('company')) {
+
+	if ( is_home() || is_front_page() ) {
+		wp_enqueue_style('index-style', get_template_directory_uri() . '/assets/css/index.css',array('main-common-css'));
+	} elseif( is_single() ) {
+		if(is_singular('talent')){
+			wp_enqueue_style('single-style', get_template_directory_uri() . '/assets/css/talents-detail.css');
+		}
+		else{
+			wp_enqueue_style('single-style', get_template_directory_uri() . '/assets/css/news-detail.css');
+		}
+	} elseif( is_post_type_archive('talent') ) {
+		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/talents.css');
+	} elseif( is_page('company') ) {
 		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/company.css');
-	} elseif (is_page('contact')) {
+	} elseif( is_page('contact') ) {
 		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/contact.css');
-		wp_enqueue_script('jqueryjs-contact', get_theme_file_uri() . "/assets/js/contact.js", array('jquery-ui'));
-	} elseif (is_page('privacy')) {
-		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/privacy.css');
-	} else{
-		wp_enqueue_style('index-style', get_template_directory_uri() . '/assets/css/index.css');
+	} elseif( is_page('news') ) {
+		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/news.css');
 	}
 }
 
