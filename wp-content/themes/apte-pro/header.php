@@ -20,7 +20,7 @@
 <div id="header">
     <div class="inner">
         <div class="headerBar">
-            <p class="logo"><a class="hover" href="<?php home_url() ?>"><img src="<?php echo get_theme_file_uri().('/assets/images/common/logo.png') ?>" alt=""></a></p>
+            <p class="logo"><a class="hover" href="<?php echo home_url() ?>"><img src="<?php echo get_theme_file_uri().('/assets/images/common/logo.png') ?>" alt=""></a></p>
             <div class="hamburger sp">
                 <span></span>
                 <span></span>

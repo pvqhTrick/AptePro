@@ -22,7 +22,7 @@ $query = new WP_Query($args);
             <?php endif; ?>
         </div>
         <p class="areaBtn">
-            <a href="<?php home_url('/news/') ?>">過去のお知らせを見る</a>
+            <a href="<?php echo home_url('/news/') ?>">過去のお知らせを見る</a>
         </p>
     </div>
 </div>

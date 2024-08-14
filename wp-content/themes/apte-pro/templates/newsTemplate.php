@@ -22,15 +22,18 @@ $query = new WP_Query($args);
             <div class="newsWrap">
                 <?php if($query->have_posts()): ?>
                 <ul class="newsList">
-                    <?php while($query->have_posts()): $query->the_post(); ?>
-                    <?php get_template_part('template-part/newsListItem'); ?>
-                    <?php endwhile; wp_reset_postdata(); ?>
+                    <?php 
+                    while($query->have_posts()): $query->the_post(); 
+                    get_template_part('template-part/newsListItem'); 
+                    endwhile; 
+                    echo theme_pagination( $query ); 
+                    wp_reset_postdata(); 
+                    ?>
                 </ul>
                 <?php endif; ?>
-                
-                <?php echo theme_pagination( $query ); ?>
             </div>
         </div>
     </div>
 </div>
 <!-- #content -->
+<?php get_footer() ?>

@@ -88,6 +88,21 @@ add_action('after_setup_theme', 'aptepro_image_sizes');
 function aptepro_image_sizes() {
     add_image_size('canvas', 319, 319, true);
 }
+
+// FUNCTION REDIRECT THANK PAGE
+function cf7_thank_you_page_redirect() {
+	?>
+	<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(document).on('wpcf7mailsent', function(event) {
+			window.location.href = '/thank-you/';
+		});
+	});
+	</script>
+	<?php
+}
+add_action( 'wp_footer', 'cf7_thank_you_page_redirect' );
+
 /// FUNCTION
 // THE FIRST IMAGE
 function the_first_thumbnail(){
@@ -100,8 +115,8 @@ if (!function_exists('mytheme_post_nav')):
 	{
 		global $post;
 
-		$previous = get_adjacent_post(false, '', true);
-		$next = get_adjacent_post(false, '', false);
+		$previous = get_adjacent_post(false, '', false);
+		$next = get_adjacent_post(false, '', true);
 
 		if (!$next && !$previous)
 			return;
@@ -236,6 +251,18 @@ function load_assets()
 		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/contact.css');
 	} elseif( is_page('news') ) {
 		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/news.css');
+	} elseif( is_page('school') ) {
+		wp_enqueue_style('school', get_template_directory_uri() . '/assets/css/school.css');
+		wp_enqueue_style('school-common', get_template_directory_uri() . '/assets/css/school-common.css');
+	} elseif( is_page('faq') ) {
+		wp_enqueue_style('faq', get_template_directory_uri() . '/assets/css/school-faq.css');
+		wp_enqueue_style('school-common', get_template_directory_uri() . '/assets/css/school-common.css');
+	} elseif( is_page('recruit') ) {
+		wp_enqueue_style('faq', get_template_directory_uri() . '/assets/css/school-recruit.css');
+		wp_enqueue_style('school-common', get_template_directory_uri() . '/assets/css/school-common.css');
+	} elseif( is_page('teacher') ) {
+		wp_enqueue_style('faq', get_template_directory_uri() . '/assets/css/school-teacher.css');
+		wp_enqueue_style('school-common', get_template_directory_uri() . '/assets/css/school-common.css');
 	}
 }
 
