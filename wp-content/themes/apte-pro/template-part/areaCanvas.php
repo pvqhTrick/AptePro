@@ -1,89 +1,23 @@
 <?php 
+$args = array(
+    'post_type' => 'talent',
+    'posts_per_page' => 11,
+    'orderby' => 'rand',
+);
 
+$query = new WP_Query($args);
 ?>
 <div class="areaCanvas">
     <div class="inner">
         <ul class="listCanvas">
-
-            <li>
-                <a href="javascript:void">
-                    <p class="canvasPhoto"><img
-                            src="<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-photo-01.jpg') ?>"
-                            alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void">
-                    <p class="canvasPhoto"><img
-                            src="<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-photo-02.jpg') ?>"
-                            alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void">
-                    <p class="canvasPhoto"><img
-                            src="<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-photo-03.jpg') ?>"
-                            alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void">
-                    <p class="canvasPhoto"><img
-                            src="<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-photo-04.jpg') ?>"
-                            alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void">
-                    <p class="canvasPhoto"><img
-                            src="<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-photo-05.jpg') ?>"
-                            alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void">
-                    <p class="canvasPhoto"><img
-                            src="<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-photo-02.jpg') ?>"
-                            alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void">
-                    <p class="canvasPhoto"><img src=<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-photo-03.jpg') ?> alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void">
-                    <p class="canvasPhoto"><img src=<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-photo-04.jpg') ?> alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void">
-                    <p class="canvasPhoto"><img src=<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-photo-04.jpg') ?> alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void">
-                    <p class="canvasPhoto"><img src=<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-photo-07.jpg') ?> alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void">
-                    <p class="canvasPhoto"><img src=<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-photo-05.jpg') ?> alt=""></p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void">
-                    <p class="canvasPhoto"><img src=<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-photo-08.jpg') ?> alt=""></p>
-                </a>
-            </li>
+            <?php 
+            echo the_first_thumbnail();
+            while ($query->have_posts()): $query->the_post(); 
+            echo get_template_part('template-part/canvasItem');
+            endwhile;
+            ?>
         </ul>
-        <h3 class="canvasTitle">
-            <picture>
-                <source media="(max-width:768px)" srcset="assets/images/index/canvas-title-sp.png">
-                <img src="<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-title.png') ?>" alt="title">
-            </picture>
-        </h3>
+        <?php echo get_template_part('template-part/canvasTitle'); ?>
     </div>
 </div>
 <!-- areaCanvas -->

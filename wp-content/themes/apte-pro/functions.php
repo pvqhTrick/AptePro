@@ -83,11 +83,15 @@ function mytheme_wp_title( $title, $sep ) {
 }
 add_filter( 'wp_title', 'mytheme_wp_title', 10, 2 );
 
-
+// ADD IMAGE SIZE
+add_action('after_setup_theme', 'aptepro_image_sizes');
+function aptepro_image_sizes() {
+    add_image_size('canvas', 319, 319, true);
+}
 /// FUNCTION
-// THE DEFAULT IMAGE
-function the_default_thumbnail(){
-		echo '<img src="' .get_theme_file_uri() . ('/assets/images/doctor/ava-men'). '">';
+// THE FIRST IMAGE
+function the_first_thumbnail(){
+	echo '<li><a href="'.the_post_thumbnail().'"><p class="canvasPhoto"><img src="'.get_theme_file_uri() . ("/assets/images/index/canvas-photo-01.jpg.").'" alt=""></p></a></li>';
 }
 
 // POST NAVIGATION
@@ -239,3 +243,9 @@ function load_assets()
 
 
 /// SHORTCODE
+function display_option_requess(){
+	ob_start();  
+	get_template_part('template-part/inputCheckBoxDoctor', null, array('query'=> 1));
+	return ob_get_clean();
+}
+add_shortcode('display_option', 'do_shortcode_in_cf7');
