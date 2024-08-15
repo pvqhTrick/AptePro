@@ -10,7 +10,7 @@
             <div class="talentWrap">
                 <div class="talentLeft">
                     <p class="talentPhoto"><a href="javascript:void(0)" class="hover"><?php the_post_thumbnail('talent-full') ?></a></p>
-                    <?php get_template_part('template-part/listNetwork'); ?>
+                    <?php get_template_part('template-part/talent-network'); ?>
                 </div>
                 <div class="talentRight">
                     <h3 class="talentName"><?php the_title() ?><span><?php echo get_field('spelling') ?></span></h3>
@@ -64,16 +64,5 @@
     </div>
 </div>
 <?php endwhile; ?>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('.listVoice a.active').on('click', function(e) {
-            e.preventDefault();
-            const audioUrl = $(this).data('audio-url');
-            if (audioUrl) {
-                window.open(audioUrl, 'Audio Player', 'width=300,height=200');
-            }
-        });
-    });
-</script>
+
 <?php get_footer() ?>

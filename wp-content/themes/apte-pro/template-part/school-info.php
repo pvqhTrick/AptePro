@@ -10,7 +10,7 @@
             <p class="mainPhoto">
                 <picture>
                     <source media="(max-width:768px)" srcset="../assets/images/school/school-main-photo-sp.jpg" alt="Main">
-                    <img src="<?php echo get_theme_file_uri() . ('/assets/images/school/school-main-photo.jpg') ?>" alt="Main">
+                    <img src="<?php echo get_theme_file_uri('/assets/images/school/school-main-photo.jpg') ?>" alt="Main">
                 </picture>
             </p>
             <div class="schoolWrap">

@@ -11,10 +11,10 @@ get_header(); ?>
                 <p class="teacherNote">現役主義の講師陣！<br class="sp">音響スタッフ・役者等々現役で活躍する<br class="sp">スタッフが強力にサポートします！</p>
                 <ul class="teacherList">
                     <li>
-                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri().('/assets/images/school/teacher-photo-01.jpg') ?>" alt="亀山 俊樹"></p>
+                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri('/assets/images/school/teacher-photo-01.jpg') ?>" alt="亀山 俊樹"></p>
                         <div class="teacherInfo">
                             <div class="infoWrap">
-                                <p class="infoPhoto sp"><img src="<?php echo get_theme_file_uri().('/assets/images/school/teacher-photo-01.jpg') ?>"alt="亀山 俊樹"></p>
+                                <p class="infoPhoto sp"><img src="<?php echo get_theme_file_uri('/assets/images/school/teacher-photo-01.jpg') ?>"alt="亀山 俊樹"></p>
                                 <p class="teacherName">亀山 俊樹<span class="name">音響監督</span></p>
                             </div>
                             <p class="teacherPosition">■主な音響監督作品</p>
@@ -24,7 +24,7 @@ get_header(); ?>
                         </div>
                     </li>
                     <li>
-                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri().('/assets/images/school/teacher-photo-02.jpg') ?>" alt="井上 薫"></p>
+                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri('/assets/images/school/teacher-photo-02.jpg') ?>" alt="井上 薫"></p>
                         <div class="teacherInfo">
                             <div class="infoWrap">
                                 <p class="infoPhoto sp"><img src="../assets/images/school/teacher-photo-02.jpg"
@@ -38,7 +38,7 @@ get_header(); ?>
                         </div>
                     </li>
                     <li>
-                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri().('/assets/images/school/teacher-photo-03.jpg') ?>" alt="榊原 良子">
+                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri('/assets/images/school/teacher-photo-03.jpg') ?>" alt="榊原 良子">
                         </p>
                         <div class="teacherInfo">
                             <div class="infoWrap">
@@ -54,7 +54,7 @@ get_header(); ?>
                         </div>
                     </li>
                     <li>
-                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri().('/assets/images/school/teacher-photo-04.jpg') ?>" alt="定岡 小百合">
+                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri('/assets/images/school/teacher-photo-04.jpg') ?>" alt="定岡 小百合">
                         </p>
                         <div class="teacherInfo">
                             <div class="infoWrap">
@@ -69,7 +69,7 @@ get_header(); ?>
                         </div>
                     </li>
                     <li>
-                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri().('/assets/images/school/teacher-photo-05.jpg') ?>" alt="白石 珠江">
+                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri('/assets/images/school/teacher-photo-05.jpg') ?>" alt="白石 珠江">
                         </p>
                         <div class="teacherInfo">
                             <div class="infoWrap">
@@ -84,7 +84,7 @@ get_header(); ?>
                         </div>
                     </li>
                     <li>
-                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri().('/assets/images/school/teacher-photo-06.jpg') ?>" alt="亀山 俊樹">
+                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri('/assets/images/school/teacher-photo-06.jpg') ?>" alt="亀山 俊樹">
                         </p>
                         <div class="teacherInfo">
                             <div class="infoWrap">
@@ -101,7 +101,7 @@ get_header(); ?>
                         </div>
                     </li>
                     <li>
-                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri().('/assets/images/school/teacher-photo-08.jpg') ?>" alt="中國 卓郎">
+                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri('/assets/images/school/teacher-photo-08.jpg') ?>" alt="中國 卓郎">
                         </p>
                         <div class="teacherInfo">
                             <div class="infoWrap">
@@ -116,7 +116,7 @@ get_header(); ?>
                         </div>
                     </li>
                     <li>
-                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri().('/assets/images/school/teacher-photo-09.jpg') ?>" alt="ふたくち つよし"></p>
+                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri('/assets/images/school/teacher-photo-09.jpg') ?>" alt="ふたくち つよし"></p>
                         <div class="teacherInfo">
                             <div class="infoWrap">
                                 <p class="infoPhoto sp"><img src="../assets/images/school/teacher-photo-08.jpg"
@@ -133,7 +133,7 @@ get_header(); ?>
                         </div>
                     </li>
                     <li>
-                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri().('/assets/images/school/teacher-photo-03.jpg') ?>" alt="松本 さち">
+                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri('/assets/images/school/teacher-photo-03.jpg') ?>" alt="松本 さち">
                         </p>
                         <div class="teacherInfo">
                             <div class="infoWrap">
@@ -148,7 +148,7 @@ get_header(); ?>
                         </div>
                     </li>
                     <li>
-                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri().('/assets/images/school/teacher-photo-10.jpg') ?>" alt="松本 大">
+                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri('/assets/images/school/teacher-photo-10.jpg') ?>" alt="松本 大">
                         </p>
                         <div class="teacherInfo">
                             <div class="infoWrap">
@@ -163,7 +163,7 @@ get_header(); ?>
                         </div>
                     </li>
                     <li>
-                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri().('/assets/images/school/teacher-photo-11.jpg') ?>" alt="吉田 裕秋">
+                        <p class="teacherPhoto pc"><img src="<?php echo get_theme_file_uri('/assets/images/school/teacher-photo-11.jpg') ?>" alt="吉田 裕秋">
                         </p>
                         <div class="teacherInfo">
                             <div class="infoWrap">
