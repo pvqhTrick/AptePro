@@ -15,7 +15,7 @@ $query = new WP_Query($args);
             <ul class="newsList">
                 <?php 
                 while($query->have_posts()): $query->the_post(); 
-                get_template_part('template-part/newsListItem');
+                get_template_part('template-part/news-list-item');
                 endwhile; wp_reset_postdata(); 
                 ?>
             </ul>

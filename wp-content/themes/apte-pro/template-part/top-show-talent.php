@@ -11,11 +11,16 @@ $query = new WP_Query($args);
         <ul class="listCanvas">
             <?php 
             while ($query->have_posts()): $query->the_post(); 
-            get_template_part('template-part/canvasItem');
+            get_template_part('template-part/talent-item');
             endwhile;
             ?>
         </ul>
-        <?php get_template_part('template-part/canvasTitle'); ?>
+        <h3 class="canvasTitle">
+            <picture>
+                <source media="(max-width:768px)" srcset="assets/images/index/canvas-title-sp.png">
+                <img src="<?php echo get_theme_file_uri() . ('/assets/images/index/canvas-title.png') ?>" alt="title">
+            </picture>
+        </h3>
     </div>
 </div>
 <!-- areaCanvas -->

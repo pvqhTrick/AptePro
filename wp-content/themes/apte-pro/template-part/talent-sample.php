@@ -9,7 +9,7 @@ $sample = get_field($args['voice']);
             $voice_url = isset($sample[$i-1]) ? $sample[$i-1]['voice'] : '';
         ?>
             <li>
-                <a href="<?php echo esc_url($voice_url); ?>" class="hover <?php echo $voice_url ? 'active' : ''; ?>">
+                <a class="hover <?php echo $voice_url ? 'active' : '';?>" data-audio-url="<?php echo esc_url($voice_url); ?>">
                     <?php echo $i; ?>
                 </a>
             </li>

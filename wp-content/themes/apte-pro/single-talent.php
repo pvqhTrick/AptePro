@@ -31,9 +31,9 @@
                     <div class="talentSample">
                         <h3 class="sampleTitle">Sample voice</h3>
                         <ul class="listSample">
-                            <?php echo get_template_part('template-part/talentSample', null, array('name'=>'セリフ', 'voice'=>'sample_new')); ?>
-                            <?php echo get_template_part('template-part/talentSample', null, array('name'=>'ナレーション', 'voice'=>'sample_narration')); ?>
-                            <?php echo get_template_part('template-part/talentSample', null, array('name'=>'その他', 'voice'=>'sample_others')); ?>
+                            <?php echo get_template_part('template-part/talent-sample', null, array('name'=>'セリフ', 'voice'=>'sample_new')); ?>
+                            <?php echo get_template_part('template-part/talent-sample', null, array('name'=>'ナレーション', 'voice'=>'sample_narration')); ?>
+                            <?php echo get_template_part('template-part/talent-sample', null, array('name'=>'その他', 'voice'=>'sample_others')); ?>
                         </ul>
                     </div>
                 </div>
@@ -50,27 +50,28 @@
         </div>
         <div class="inner">
             <div class="appearanceWrap">
-                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'animation')); ?>
-                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'animated_feature_film')); ?>
-                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'dubbing')); ?>
-                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'drama_cd')); ?>
-                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'game')); ?>
-                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'narration')); ?>
-                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'voiceover')); ?>
-                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'radio')); ?>
-                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'others')); ?>
+                <?php get_template_part('template-part/talent-main-field', null, array('field' => 'animated_feature_film')); ?>
+                <?php get_template_part('template-part/talent-main-field', null, array('field' => 'dubbing')); ?>
+                <?php get_template_part('template-part/talent-main-field', null, array('field' => 'drama_cd')); ?>
+                <?php get_template_part('template-part/talent-main-field', null, array('field' => 'game')); ?>
+                <?php get_template_part('template-part/talent-main-field', null, array('field' => 'animation')); ?>
+                <?php get_template_part('template-part/talent-main-field', null, array('field' => 'narration')); ?>
+                <?php get_template_part('template-part/talent-main-field', null, array('field' => 'voiceover')); ?>
+                <?php get_template_part('template-part/talent-main-field', null, array('field' => 'radio')); ?>
+                <?php get_template_part('template-part/talent-main-field', null, array('field' => 'others')); ?>
             </div>
         </div>
     </div>
 </div>
 <?php endwhile; ?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         $('.listVoice a.active').on('click', function(e) {
             e.preventDefault();
             const audioUrl = $(this).data('audio-url');
             if (audioUrl) {
-                window.open(`/audio-player/?audio_url=${encodeURIComponent(audioUrl)}`, 'Audio Player', 'width=300,height=200');
+                window.open(audioUrl, 'Audio Player', 'width=300,height=200');
             }
         });
     });

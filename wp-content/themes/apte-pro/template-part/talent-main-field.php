@@ -1,7 +1,6 @@
 <?php 
-$field =$args['field'];
+$field = $args['field'];
 $object = get_field_object($field);
-
 if($object['value']):
 ?>
 <div class="appearanceBox">

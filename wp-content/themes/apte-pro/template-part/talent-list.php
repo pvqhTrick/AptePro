@@ -22,7 +22,7 @@ $query = new WP_Query($args);
         <ul class="listTalents">
             <?php 
             while ($query->have_posts()): $query->the_post(); 
-            get_template_part('template-part/talentBoxInfo'); 
+            get_template_part('template-part/talent-box-info'); 
             endwhile; wp_reset_postdata();
             ?>
         </ul>
