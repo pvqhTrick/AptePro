@@ -5,14 +5,20 @@ $args = array(
     'orderby' => 'rand',
 );
 $query = new WP_Query($args);
+$isFirst = true;
 ?>
 <div class="areaCanvas">
     <div class="inner">
         <ul class="listCanvas">
             <?php 
             while ($query->have_posts()): $query->the_post(); 
-            get_template_part('template-part/talent-item');
-            endwhile;
+            if ($isFirst) {
+                get_template_part('template-part/talent-item',null, array('isFirst'=>true));
+                $isFirst = false;
+            } else{
+                get_template_part('template-part/talent-item',null, array('isFirst'=>false));
+            }
+            endwhile; wp_reset_postdata();
             ?>
         </ul>
         <h3 class="canvasTitle">

@@ -108,7 +108,7 @@ function cf7_thank_you_page_redirect() {
 /// FUNCTION
 // THE FIRST IMAGE
 function the_first_thumbnail(){
-	echo '<li><a href="'.the_post_thumbnail().'"><p class="canvasPhoto"><img src="'.get_theme_file_uri() . ("/assets/images/index/canvas-photo-01.jpg.").'" alt=""></p></a></li>';
+	echo '<li><a href="'.the_permalink().'"><p class="canvasPhoto first"><img src="'.get_theme_file_uri('/assets/images/index/canvas-photo-01.jpg').'"></p></a></li>';
 }
 
 // POST NAVIGATION
