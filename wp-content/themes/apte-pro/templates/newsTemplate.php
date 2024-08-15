@@ -3,9 +3,8 @@
 Template Name: All Posts
 */
 get_header();
-$paged = isset($_GET['paged']) ? $_GET['paged'] : 1;
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $args = array(
-    'post_type' => 'post',
     'posts_per_page' => 16,
     'paged'=> $paged,
 );
@@ -26,7 +25,7 @@ $query = new WP_Query($args);
                     while($query->have_posts()): $query->the_post(); 
                     get_template_part('template-part/newsListItem'); 
                     endwhile; 
-                    echo theme_pagination( $query ); 
+                    theme_pagination( $query ); 
                     wp_reset_postdata(); 
                     ?>
                 </ul>

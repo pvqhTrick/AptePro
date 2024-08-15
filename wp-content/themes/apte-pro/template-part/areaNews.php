@@ -1,9 +1,7 @@
 <?php 
 $args = array(
-    'post_type' => 'post',
     'posts_per_page' => 8,
 );
-
 $query = new WP_Query($args);
 ?>
 <div class="areaNews">
@@ -15,14 +13,14 @@ $query = new WP_Query($args);
         <div class="newsWrap">
             <?php if($query->have_posts()): ?>
             <ul class="newsList">
-                <?php while($query->have_posts()): $query->the_post(); ?>
-                <?php get_template_part('template-part/newsListItem'); ?>
-                <?php endwhile; wp_reset_postdata(); ?>
+                <?php 
+                while($query->have_posts()): $query->the_post(); 
+                get_template_part('template-part/newsListItem');
+                endwhile; wp_reset_postdata(); 
+                ?>
             </ul>
             <?php endif; ?>
         </div>
-        <p class="areaBtn">
-            <a href="<?php echo home_url('/news/') ?>">過去のお知らせを見る</a>
-        </p>
+        <p class="areaBtn"><a href="<?php echo home_url('/news/') ?>">過去のお知らせを見る</a></p>
     </div>
 </div>

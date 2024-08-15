@@ -1,9 +1,11 @@
 <?php 
-$subtitle =  $args['subtitle'];
-$detail = $args['detail'];
-?>
+$field =$args['field'];
+$object = get_field_object($field);
 
+if($object['value']):
+?>
 <div class="appearanceBox">
-    <p class="appearanceName"><?php echo $subtitle ?></p>
-    <ul class="listWorks"><?php echo $detail ?></ul>
+    <p class="appearanceName"><?php echo $object['label'] ?></p>
+    <ul class="listWorks"><?php echo $object['value'] ?></ul>
 </div>
+<?php endif ?>

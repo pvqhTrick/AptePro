@@ -6,13 +6,12 @@ $args = array(
         array(
             'taxonomy' => 'talent-category',
             'field' => 'slug',
-            'terms' => 'cat-1',
+            'terms' => $args['slug'],
         ),
     ),
 );
 $query = new WP_Query($args);
 ?>
-
 <div class="areaTalents">
     <div class="inner">
         <div class="areaTitle">

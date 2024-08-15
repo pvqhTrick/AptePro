@@ -87,6 +87,8 @@ add_filter( 'wp_title', 'mytheme_wp_title', 10, 2 );
 add_action('after_setup_theme', 'aptepro_image_sizes');
 function aptepro_image_sizes() {
     add_image_size('canvas', 319, 319, true);
+    add_image_size('talent', 219, 340, true);
+    add_image_size('talent-full', 280, 450, true);
 }
 
 // FUNCTION REDIRECT THANK PAGE
@@ -95,13 +97,13 @@ function cf7_thank_you_page_redirect() {
 	<script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(document).on('wpcf7mailsent', function(event) {
-			window.location.href = '/thank-you/';
+			window.location.href = '<?php echo home_url('/contact/thanks/')?>';
 		});
 	});
 	</script>
 	<?php
 }
-add_action( 'wp_footer', 'cf7_thank_you_page_redirect' );
+// add_action( 'wp_footer', 'cf7_thank_you_page_redirect' );
 
 /// FUNCTION
 // THE FIRST IMAGE
@@ -161,9 +163,12 @@ function theme_pagination($post_query = null)
 	if ($total > 1) {
 		echo '<div class="pagingNav">';
 		echo '<ul class = "pagi_nav_list">';
-		if ($paged > 1) {
+		if ($paged >= 1) {
 			echo '<li class="p-control prev"><a href="' . previous_posts(false) . '">' . $translate['prev'] . '</a></li>';
+		}else{
+			echo '<li class="p-control prev disable"><a href="' . previous_posts(false) . '">' . $translate['prev'] . '</a></li>';
 		}
+		
 		for ($i = 1; $i <= $total; $i++) {
 			if ($i == $paged) {
 				echo '<li class="active"><a>' . $i . '</a></li>';
@@ -247,7 +252,7 @@ function load_assets()
 		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/talents.css');
 	} elseif( is_page('company') ) {
 		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/company.css');
-	} elseif( is_page('contact') ) {
+	} elseif( is_page('contact') || is_page('thanks') || is_page('contact-confirm') ) {
 		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/contact.css');
 	} elseif( is_page('news') ) {
 		wp_enqueue_style('list-style', get_template_directory_uri() . '/assets/css/news.css');

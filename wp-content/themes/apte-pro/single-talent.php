@@ -1,4 +1,5 @@
 <?php get_header() ?>
+<?php while(have_posts()): the_post(); ?>
 <div id="content">
     <div class="areaTalent">
         <div class="inner">
@@ -8,11 +9,7 @@
             </div>
             <div class="talentWrap">
                 <div class="talentLeft">
-                    <p class="talentPhoto">
-                        <a href="javascript:void(0)" class="hover">
-                            <?php the_post_thumbnail('full') ?>
-                        </a>
-                    </p>
+                    <p class="talentPhoto"><a href="javascript:void(0)" class="hover"><?php the_post_thumbnail('talent-full') ?></a></p>
                     <?php get_template_part('template-part/listNetwork'); ?>
                 </div>
                 <div class="talentRight">
@@ -34,36 +31,9 @@
                     <div class="talentSample">
                         <h3 class="sampleTitle">Sample voice</h3>
                         <ul class="listSample">
-                            <li>
-                                <p class="sampleName">セリフ</p>
-                                <ul class="listVoice">
-                                    <li><a href="javascript:void(0)" class="hover active">1</a></li>
-                                    <li><a href="javascript:void(0)" class="hover active">2</a></li>
-                                    <li><a href="javascript:void(0)" class="hover active">3</a></li>
-                                    <li><a href="javascript:void(0)" class="hover active">4</a></li>
-                                    <li><a href="javascript:void(0)" class="hover active">5</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <p class="sampleName">ナレーション</p>
-                                <ul class="listVoice">
-                                    <li><a href="javascript:void(0)" class="hover active">1</a></li>
-                                    <li><a href="javascript:void(0)" class="hover active">2</a></li>
-                                    <li><a href="javascript:void(0)" class="hover">3</a></li>
-                                    <li><a href="javascript:void(0)" class="hover">4</a></li>
-                                    <li><a href="javascript:void(0)" class="hover">5</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <p class="sampleName">その他</p>
-                                <ul class="listVoice">
-                                    <li><a href="javascript:void(0)" class="hover active">1</a></li>
-                                    <li><a href="javascript:void(0)" class="hover">2</a></li>
-                                    <li><a href="javascript:void(0)" class="hover">3</a></li>
-                                    <li><a href="javascript:void(0)" class="hover">4</a></li>
-                                    <li><a href="javascript:void(0)" class="hover">5</a></li>
-                                </ul>
-                            </li>
+                            <?php echo get_template_part('template-part/talentSample', null, array('name'=>'セリフ', 'voice'=>'sample_new')); ?>
+                            <?php echo get_template_part('template-part/talentSample', null, array('name'=>'ナレーション', 'voice'=>'sample_narration')); ?>
+                            <?php echo get_template_part('template-part/talentSample', null, array('name'=>'その他', 'voice'=>'sample_others')); ?>
                         </ul>
                     </div>
                 </div>
@@ -78,19 +48,31 @@
                 <h3 class="talentsCustody">主な出演作品</h3>
             </div>
         </div>
-        <?php if (have_rows('main-appearances')): ?>
         <div class="inner">
             <div class="appearanceWrap">
-                <?php 
-                while (have_rows('main-appearances')) : the_row(); 
-                $subtitle = get_sub_field('subtitle');
-                $detail = get_sub_field('detail');
-                echo get_template_part('template-part/appearanceBox', null, array('subtitle'=>$subtitle, 'detail' => $detail));
-                endwhile; 
-                ?>
+                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'animation')); ?>
+                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'animated_feature_film')); ?>
+                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'dubbing')); ?>
+                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'drama_cd')); ?>
+                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'game')); ?>
+                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'narration')); ?>
+                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'voiceover')); ?>
+                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'radio')); ?>
+                <?php get_template_part('template-part/appearanceBox', null, array('field' => 'others')); ?>
             </div>
         </div>
-        <?php endif; ?>
     </div>
 </div>
+<?php endwhile; ?>
+<script>
+    $(document).ready(function() {
+        $('.listVoice a.active').on('click', function(e) {
+            e.preventDefault();
+            const audioUrl = $(this).data('audio-url');
+            if (audioUrl) {
+                window.open(`/audio-player/?audio_url=${encodeURIComponent(audioUrl)}`, 'Audio Player', 'width=300,height=200');
+            }
+        });
+    });
+</script>
 <?php get_footer() ?>
