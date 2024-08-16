@@ -31,9 +31,9 @@
                     <div class="talentSample">
                         <h3 class="sampleTitle">Sample voice</h3>
                         <ul class="listSample">
-                            <?php echo get_template_part('template-part/talent-sample', null, array('name'=>'セリフ', 'voice'=>'sample_new')); ?>
-                            <?php echo get_template_part('template-part/talent-sample', null, array('name'=>'ナレーション', 'voice'=>'sample_narration')); ?>
-                            <?php echo get_template_part('template-part/talent-sample', null, array('name'=>'その他', 'voice'=>'sample_others')); ?>
+                            <?php get_template_part('template-part/talent-sample', null, array('name'=>'セリフ', 'voice'=>'sample_new')); ?>
+                            <?php get_template_part('template-part/talent-sample', null, array('name'=>'ナレーション', 'voice'=>'sample_narration')); ?>
+                            <?php get_template_part('template-part/talent-sample', null, array('name'=>'その他', 'voice'=>'sample_others')); ?>
                         </ul>
                     </div>
                 </div>

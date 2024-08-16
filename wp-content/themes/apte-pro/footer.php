@@ -1,7 +1,7 @@
 <p id="copyright">© 2024 Phan Van Quoc Hung.</p>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
+    $(document).ready(function() {  
         $('#loading-screen').fadeOut('swing');
     });
     

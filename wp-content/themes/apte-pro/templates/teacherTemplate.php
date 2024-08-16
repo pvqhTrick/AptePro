@@ -4,7 +4,7 @@ Template Name: Teacher template
 */
 get_header(); ?>
 <div id="content">
-    <?php echo get_template_part('template-part/school-info'); ?>    
+    <?php get_template_part('template-part/school-info'); ?>    
     <div class="areaTeacher">
         <div class="inner">
             <div class="teacherWrap">

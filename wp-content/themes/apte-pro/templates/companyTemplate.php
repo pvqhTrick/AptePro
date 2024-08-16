@@ -2,8 +2,7 @@
 /*
 Template Name: Company Template
 */
-?>
-<?php get_header() ?>
+get_header() ?>
 <div id="content">
     <div class="areaCompany">
         <div class="inner">

@@ -9,7 +9,7 @@ $args = array(
 $query = new WP_Query($args);
 ?>
 <div id="content">
-    <?php echo get_template_part('template-part/school-info'); ?>
+    <?php get_template_part('template-part/school-info'); ?>
     <?php if($query->have_posts()): $query->the_post();?>
     <div class="areaFaq">
         <div class="inner">

@@ -4,7 +4,7 @@ Template Name: School template
 */
 get_header() ?>
 <div id="content">
-    <?php echo get_template_part('template-part/school-info'); ?>
+    <?php get_template_part('template-part/school-info'); ?>
     <div class="areaPoint">
         <div class="inner">
             <p class="pointNote">音響監督 亀山俊樹が立ち上げた、<br class="sp">声優プロダクション付属養成所です。<br>プロダクションに直結した養成所で<br
